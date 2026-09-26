@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.UIElements.Experimental;
 
 /*
 This class holds the data on the grid
@@ -63,11 +64,11 @@ public class GridDataManager : MonoBehaviour {
                 TileData data = GetTileDataForId(cell.cellValue);
                 Vector2Int pos = new(i, j);
 
-                Tile tile = TileFactory.Create(data, pos);
-                tile.Instance = Instantiate(data.prefab, gridDisplay.transform);
+                var inst = Instantiate(data.prefab, gridDisplay.transform);
+                Tile tile = TileFactory.Create(data, pos, inst);
                 gridDisplay.PlaceObjectOnGrid(tile.Instance, pos);
 
-                if (tile.Data.type == TileType.Road) {
+                if (tile.Type == TileType.Road) {
                     tile.Instance.GetComponent<RoadSpriteSetter>().ChangeSprite(cell.directionsOpen);
                 }
 
@@ -83,10 +84,10 @@ public class GridDataManager : MonoBehaviour {
 
         Vector2Int cellPos = new(newTile.GridPosition.x, newTile.GridPosition.y);
 
-        gridDirectionalCells[cellPos.x, cellPos.y] = new(ConvertTileTypeToId(newTile.Data.type), obj.directionOpen);
+        gridDirectionalCells[cellPos.x, cellPos.y] = new(ConvertTileTypeToId(newTile.Type), obj.directionOpen);
         gridTiles[cellPos.x, cellPos.y] = newTile;
 
-        ChangeTileSpriteIfRoad(cellPos, newTile.Instance, newTile.Data.type == TileType.Road);
+        ChangeTileSpriteIfRoad(cellPos, newTile.Instance, newTile.Type == TileType.Road);
 
         ChangeAdjacentRoadSprites(cellPos);
     }
@@ -100,15 +101,15 @@ public class GridDataManager : MonoBehaviour {
             return null;
         }
 
-        if (obj.tileData.type != TileType.Empty && gridTiles[cellPos.x, cellPos.y].Data.type != TileType.Empty) {
+        if (obj.tileData.type != TileType.Empty && gridTiles[cellPos.x, cellPos.y].Type != TileType.Empty) {
             //Debug.Log("Not empty!");
             return null;
         }
 
         Destroy(gridTiles[cellPos.x, cellPos.y].Instance);
 
-        Tile tile = TileFactory.Create(obj.tileData, cellPos);
-        tile.Instance = Instantiate(obj.tileData.prefab, transform);
+        var inst = Instantiate(obj.tileData.prefab, transform);
+        Tile tile = TileFactory.Create(obj.tileData, cellPos, inst);
         tile.Instance.transform.rotation = obj.transform.rotation;
         gridDisplay.PlaceObjectOnGrid(tile.Instance, cellPos);
 
@@ -202,12 +203,12 @@ public class GridDataManager : MonoBehaviour {
     public NeedType? TryGetTileNeed(Vector2Int point) {
         if (!IsWithinGridBounds(point)) return null;
 
-        return gridTiles[point.x, point.y].Data.need;
+        return gridTiles[point.x, point.y].Need;
     }
     public TileType? TryGetTileType(Vector2Int point) {
         if (!IsWithinGridBounds(point)) return null;
 
-        return gridTiles[point.x, point.y].Data.type;
+        return gridTiles[point.x, point.y].Type;
     }
     public GameObject TryGetTileInstance(Vector2Int point) {
         if (!IsWithinGridBounds(point)) return null;
@@ -226,7 +227,7 @@ public class GridDataManager : MonoBehaviour {
 
         for (int i = 0; i < gridTiles.GetLength(0); i++) {
             for (int j = 0; j < gridTiles.GetLength(1); j++) {
-                if (gridTiles[i,j].Data.type == tileType) points.Add(new(i, j));
+                if (gridTiles[i,j].Type == tileType) points.Add(new(i, j));
             }
         }
 
