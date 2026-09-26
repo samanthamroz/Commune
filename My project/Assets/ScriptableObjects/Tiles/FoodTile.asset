@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1fd7acd0660b6c43818f36fd1b9f78a, type: 3}
+  m_Name: FoodTile
+  m_EditorClassIdentifier: Assembly-CSharp::Tile
+  id: 5
+  type: 5
+  need: 3
+  prefab: {fileID: 8377745819767152900, guid: 44a07493010a0bb42b60f1fffa87df9c, type: 3}
+  needsNeighboringRoad: 1
+  spawnsResidents: 0
+  affecters:
+  - {fileID: 11400000, guid: 691b763b3e731664d9da42d38bda3983, type: 2}

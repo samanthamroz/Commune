@@ -1,0 +1,124 @@
+{
+    "width": 7,
+    "height": 4,
+    "grid": [
+        {
+            "cellValue": 1,
+            "directionsOpen": 3
+        },
+        {
+            "cellValue": 1,
+            "directionsOpen": 11
+        },
+        {
+            "cellValue": 1,
+            "directionsOpen": 11
+        },
+        {
+            "cellValue": 1,
+            "directionsOpen": 11
+        },
+        {
+            "cellValue": 1,
+            "directionsOpen": 10
+        },
+        {
+            "cellValue": 1,
+            "directionsOpen": 11
+        },
+        {
+            "cellValue": 2,
+            "directionsOpen": 8
+        },
+
+
+        {
+            "cellValue": 1,
+            "directionsOpen": 5
+        },
+        {
+            "cellValue": 5,
+            "directionsOpen": 4
+        },
+        {
+            "cellValue": 3,
+            "directionsOpen": 4
+        },
+        {
+            "cellValue": 4,
+            "directionsOpen": 4
+        },
+        {
+            "cellValue": 0,
+            "directionsOpen": 0
+        },
+        {
+            "cellValue": 1,
+            "directionsOpen": 7
+        },
+        {
+            "cellValue": 2,
+            "directionsOpen": 8
+        },
+
+
+        {
+            "cellValue": 1,
+            "directionsOpen": 7
+        },
+        {
+            "cellValue": 1,
+            "directionsOpen": 11
+        },
+        {
+            "cellValue": 1,
+            "directionsOpen": 11
+        },
+        {
+            "cellValue": 1,
+            "directionsOpen": 11
+        },
+        {
+            "cellValue": 2,
+            "directionsOpen": 8
+        },
+        {
+            "cellValue": 1,
+            "directionsOpen": 7
+        },
+        {
+            "cellValue": 2,
+            "directionsOpen": 8
+        },
+        
+
+        {
+            "cellValue": 2,
+            "directionsOpen": 4
+        },
+        {
+            "cellValue": 2,
+            "directionsOpen": 4
+        },
+        {
+            "cellValue": 2,
+            "directionsOpen": 4
+        },
+        {
+            "cellValue": 2,
+            "directionsOpen": 4
+        },
+        {
+            "cellValue": 3,
+            "directionsOpen": 2
+        },
+        {
+            "cellValue": 1,
+            "directionsOpen": 14
+        },
+        {
+            "cellValue": 2,
+            "directionsOpen": 8
+        }
+    ]
+}
